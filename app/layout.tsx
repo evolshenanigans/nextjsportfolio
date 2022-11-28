@@ -15,7 +15,7 @@ export default function RootLayout({
         <meta name='description' content="Full Stack Developer" />
         <link rel="icon" href="/favicon.ico" />
         </head>
-      <body className='flex h-full flex-col bg-zinc-50 dark:bg-black'>
+      <body className='flex h-full flex-col'>
         <Navigation/>
         {children}
         </body>
