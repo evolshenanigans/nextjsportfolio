@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
   return (
-    <div className='text-white'>About page</div>
+    <div className='grid place-items-center text-white h-screen bg-[#0A1A20]'>About page</div>
   )
 }
 
