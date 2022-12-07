@@ -13,6 +13,8 @@
     "@types/node": "18.11.9",
     "@types/react": "18.0.25",
     "@types/react-dom": "18.0.9",
+    "clipboard": "^2.0.11",
+    "copy-to-clipboard": "^3.3.3",
     "eslint": "8.28.0",
     "eslint-config-next": "13.0.4",
     "inter-ui": "^3.19.3",
@@ -21,6 +23,8 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
+    "react-rough-notation": "^1.0.3",
+    "tailwindcss-neumorphism": "^0.1.0",
     "typescript": "^4.9.3"
   },
   "devDependencies": {
