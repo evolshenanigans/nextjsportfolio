@@ -3,7 +3,7 @@ import picture from "../public/SMlong.jpg";
 
 export default function Home() {
   return (
-    <div className="grid overflow-hidden relative h-screen place-items-center bg-[#0A1A20] ">
+    <div className="grid overflow-hidden h-screen place-items-center bg-[#0A1A20] ">
       <div className="bg-[#0E0004] overflow-hidden grid h-5/6 w-5/6 rounded-xl drop-shadow-2xl shadow-2xl relative">
         <div className="grid h-10 place-items-center pt-10 relative">
           <h1 className="text-white text-3xl font-bold relative">

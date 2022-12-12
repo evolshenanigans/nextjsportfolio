@@ -1,39 +1,41 @@
-"use client"
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
-const Blog = () => {
-  const [posts, setPosts] = useState<{ title: string, content: string }[]>([])
+function Blog() {
+  const [journalEntry, setJournalEntry] = useState("");
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement> & { target: HTMLFormElement }) => {
-    e.preventDefault()
-    const formData = new FormData(e.target)
-    const title = formData.get('title') as string
-    const content = formData.get('content') as string
-    setPosts([...posts, { title, content }])
-  }
-  
+  const handleSubmit = async (event: any) => {
+    event.preventDefault();
+
+    const response = await fetch("/api/index.ts", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        entry: journalEntry,
+      }),
+    });
+
+    if (response.ok) {
+      // handle successful submission
+    } else {
+      // handle error
+    }
+  };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="title">Title:</label>
-        <input type="text" name="title" id="title" />
-        <label htmlFor="content">Content:</label>
-        <textarea name="content" id="content" />
-        <button type="submit">Submit</button>
-      </form>
-      <h2>Blog Posts</h2>
-      <ul>
-        {posts.map((post, i) => (
-          <li key={i}>
-            <h3>{post.title}</h3>
-            <p>{post.content}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  )
+    <form className="bg-black" onSubmit={handleSubmit}>
+      <textarea
+        value={journalEntry}
+        onChange={(event) => setJournalEntry(event.target.value)}
+      />
+      <button className="bg-white" type="submit">
+        Save
+      </button>
+    </form>
+  );
 }
 
-export default Blog
+export default Blog;
