@@ -20,22 +20,27 @@ function copyEmailToClipboard() {
   // Remove the input from the page
   document.body.removeChild(input);
 }
+function gitHub(url:any){
+  window.location.href = url;
+}
 
 
 function Contact() {
   return (
     <div
-    onClick={() => {copyEmailToClipboard()}
-    }
     className="h-screen w-[100%] grid grid-cols-1 gap-4 content-center bg-gray-200 text-gray-700">
-      <button
+      <button onClick={() => {copyEmailToClipboard()}
+    }
       className="rounded-full nm-flat-gray-200 hover:nm-inset-gray-200 leading-5 px-4 py-4 uppercase font-bold  transition duration-200 ease-in-out transform">
-        email
+        email *click to copy*
       </button>
-      <button className="rounded-full nm-flat-gray-200 hover:nm-inset-gray-200 leading-5 px-4 py-4 uppercase font-bold  transition duration-200 ease-in-out transform ">
+      <button onClick={() => {gitHub('https://github.com/evolshenanigans')}}
+      className="rounded-full nm-flat-gray-200 hover:nm-inset-gray-200 leading-5 px-4 py-4 uppercase font-bold  transition duration-200 ease-in-out transform ">
         github
       </button>
-      <button className="rounded-full nm-flat-gray-200 hover:nm-inset-gray-200 leading-5 px-4 py-4 uppercase font-bold  transition duration-200 ease-in-out transform">
+      <button
+      onClick={() => {gitHub('https://www.linkedin.com/in/gjgutierrez/')}}
+      className="rounded-full nm-flat-gray-200 hover:nm-inset-gray-200 leading-5 px-4 py-4 uppercase font-bold  transition duration-200 ease-in-out transform">
         linkedin
       </button>
     </div>
