@@ -21,5 +21,7 @@ module.exports = {
     },
     extend: {},
   },
-  plugins: [require('tailwindcss-neumorphism')],
+  plugins: [require('tailwindcss-neumorphism'),
+  require("@tailwindcss/aspect-ratio"),
+  ],
 }

@@ -1,41 +1,47 @@
-"use client";
+import { NextPage } from "next";
+import { use } from "react";
+import { getBlogs } from "../lib/blogs";
+import Image from "next/image";
+import Link from "next/link";
 
-import { useState } from "react";
+async function getInitialBlogs() {
+  const blogs = getBlogs();
+  return blogs;
+}
 
-function Blog() {
-  const [journalEntry, setJournalEntry] = useState("");
+const shortify = (text: string, maxLength = 60) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
 
-  const handleSubmit = async (event: any) => {
-    event.preventDefault();
+  return text.substring(0, maxLength) + " ...";
+}
 
-    const response = await fetch("/api/index.ts", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        entry: journalEntry,
-      }),
-    });
-
-    if (response.ok) {
-      // handle successful submission
-    } else {
-      // handle error
-    }
-  };
-
+const Blog: NextPage = () => {
+  const blogs = use(getInitialBlogs());
+  
   return (
-    <form className="bg-black" onSubmit={handleSubmit}>
-      <textarea
-        value={journalEntry}
-        onChange={(event) => setJournalEntry(event.target.value)}
-      />
-      <button className="bg-white" type="submit">
-        Save
-      </button>
-    </form>
-  );
+    <div>
+      <h2 className="sr-only">Blogs</h2>
+
+      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-4 xl:gap-x-8">
+        {blogs.map(blog => (
+          <div className="group">
+            <div className="relative aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
+              <Image
+                fill
+                src={blog.coverImage}
+                alt={""}
+                className="h-full w-full object-cover object-center group-hover:opacity-75"
+              />
+            </div>
+            <h3 className="mt-4 text-sm text-gray-700">{blog.title}</h3>
+            <p className="mt-1 text-md font-medium text-gray-900">{shortify(blog.description, 100)}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  )
 }
 
 export default Blog;
